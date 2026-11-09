@@ -244,6 +244,12 @@
   .the-day { font-size: 36px; margin: 24px 0; }
   .date-big { direction: ltr; font-variant-numeric: lining-nums; font-family: "Cormorant Garamond", serif; font-weight: 500; letter-spacing: .45em; font-size: 15px; margin-top: 6px; color: #8a7356; }
 
+  .verse-note { font-size: 16px; color: #8a6f62; }
+  .pause-btn { margin: 10px 0 26px; }
+  .bism { font-family: "Amiri", serif; font-size: 22px; color: #9a7535; margin: 10px 0 14px; direction: rtl; }
+  .verse { font-family: "Amiri", serif; direction: rtl; font-size: clamp(21px, 5.8vw, 25px); line-height: 2.1; color: #4a3530; max-width: 290px; }
+  .verse-ref { font-family: "Tajawal", sans-serif; font-size: 14px; color: #8a6f62; margin-top: 12px; }
+  .body-txt { font-size: 20px; line-height: 1.9; max-width: 290px; margin: 6px auto 0; color: #4a3530; }
   .detail { margin: 16px 0 0; }
   .detail .caps { display: block; margin-bottom: 4px; }
   .detail .val { font-size: 24px; font-weight: 700; color: #3b3026; }
@@ -444,7 +450,24 @@
   </section>
 
 
-  <!-- 3. الميعاد والمكان (آخر صفحة) -->
+  <!-- 3. الآية -->
+  <section class="page blush">
+    <div class="verse-note st" style="--i:0">يُرجى إيقاف الموسيقى أثناء قراءة الآية</div>
+    <button class="btn pause-btn st" id="versePause" style="--i:1">إيقاف الموسيقى</button>
+    <div class="bism st" style="--i:3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="verse st" style="--i:4">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</div>
+    <div class="verse-ref st" style="--i:5">سورة الروم — الآية 21</div>
+  </section>
+
+  <!-- 4. الشكر -->
+  <section class="page blush">
+    <div class="ribbon st" style="--i:0">كلمة شكر</div>
+    <div class="heading ar-script foil st" style="--i:1">شكراً من القلب</div>
+    <svg class="divider st" style="--i:2"><use href="#divider"/></svg>
+    <p class="body-txt st" style="--i:3" data-f="thanks">إلى أهلنا وأحبابنا الذين كانوا معنا في كل خطوة، محبتكم هي ما أوصلنا إلى هذا اليوم، ويسعدنا أن نحتفل معكم.</p>
+  </section>
+
+  <!-- 5. الميعاد والمكان (آخر صفحة) -->
   <section class="page blush">
     <div class="ribbon st" style="--i:0">موعد الحفل</div>
     <div class="heading ar-script foil st" style="--i:1">الزمان والمكان</div>
@@ -472,6 +495,7 @@ const CONFIG = {
   doorsOpen: "الساعة 7:00 مساءً",
   venueName: "قاعة Imperial",
   venueAddress: "نادي الفروسية، مدينة نصر",
+  thanks: "إلى أهلنا وأحبابنا الذين كانوا معنا في كل خطوة، محبتكم هي ما أوصلنا إلى هذا اليوم، ويسعدنا أن نحتفل معكم.",
   mapQuery: "30.074539,31.357403",       // اللي يتكتب في جوجل ماب، أو حط لينك كامل في mapUrl
   mapUrl: "https://www.google.com/maps/dir/?api=1&destination=30.074539,31.357403",
   music: "music.mp3"                     // ملف الموسيقى جنب الملف ده (سيبه فاضي لو مش عايز موسيقى)
@@ -496,6 +520,7 @@ const fields = {
   doorsOpen: CONFIG.doorsOpen,
   venueName: CONFIG.venueName,
   venueAddress: CONFIG.venueAddress,
+  thanks: CONFIG.thanks,
 };
 document.querySelectorAll("[data-f]").forEach(el => { el.textContent = fields[el.dataset.f] ?? ""; });
 document.title = `${fields.names} — ${fields.date}`;
@@ -509,10 +534,12 @@ document.querySelectorAll(".page.blush").forEach(p => {
 /* ---------- الموسيقى: تحاول تشتغل أول ما اللينك يتفتح، ولو المتصفح منعها تشتغل مع أول لمسة ---------- */
 const audio = document.getElementById("audio");
 const musicBtn = document.getElementById("music");
+const versePause = document.getElementById("versePause");
 let wantMusic = !!CONFIG.music;
 if (CONFIG.music) audio.src = CONFIG.music;
 function syncBtn() {
   musicBtn.textContent = audio.paused ? "▶" : "❚❚";
+  versePause.textContent = audio.paused ? "تشغيل الموسيقى" : "إيقاف الموسيقى";
 }
 function startMusic() {
   if (!wantMusic || !audio.paused) return;
@@ -527,6 +554,12 @@ audio.addEventListener("pause", syncBtn);
 musicBtn.addEventListener("click", e => {
   e.stopPropagation();
   if (audio.paused) { wantMusic = true; audio.play(); } else { wantMusic = false; audio.pause(); }
+});
+// زرار الآية: ضغطة توقف وضغطة تشغّل
+versePause.addEventListener("click", e => {
+  e.stopPropagation();
+  if (audio.paused) { wantMusic = true; audio.play().then(() => musicBtn.classList.add("show")).catch(() => {}); }
+  else { wantMusic = false; audio.pause(); }
 });
 
 /* ---------- الصفحات ---------- */
