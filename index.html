@@ -210,55 +210,31 @@
   .venue-line { font-size: 14px !important; color: #e9dfca !important; }
   .venue-line b { font-weight: 400; color: var(--gold-hi); }
 
-  /* ---------- صفحات القلعة: حيطة حجر فاتح عاجي + نور مشاعل + دهب وأحمر ملكي ---------- */
-  .page.castle {
-    color: #4a3a28; padding: 84px 40px 92px;
-    background:
-      radial-gradient(ellipse 70% 30% at 12% 14%, rgba(255,175,90,.22), transparent 70%),
-      radial-gradient(ellipse 70% 30% at 88% 14%, rgba(255,175,90,.22), transparent 70%),
-      radial-gradient(ellipse 75% 50% at 50% 46%, #fffaf0, transparent 72%),
-      var(--stone-light),
-      linear-gradient(#efe3cc, #e2d1b2);
+  /* ---------- الصفحات من جوه: بمبي فاتح + ورد في الأركان (زي ورد الباب) + برواز دهب رفيع ---------- */
+  .page.blush {
+    color: #6b4a44; padding: 84px 40px 92px;
+    background: radial-gradient(circle at 50% 38%, #fffaf7, #f7e4de 55%, #eccbc2);
   }
-  .page.castle::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 80% 75% at 50% 48%, transparent 55%, rgba(120,88,45,.22) 100%); }
-  .page.castle .dust { position: absolute !important; }
-  .page.castle .dust i { background: #e8a94a; box-shadow: 0 0 5px 1px rgba(230,160,60,.6); }
-  /* قوس الحجر: نفس قوس باب القلعة، بخطين دهب وحجر المفتاح فوق */
-  .arch {
-    position: absolute !important; inset: 40px 18px 46px; pointer-events: none;
-    border: 1.5px solid rgba(160,118,55,.75); border-radius: 50% 50% 6px 6px / 23% 23% 6px 6px;
-    background: radial-gradient(ellipse 90% 60% at 50% 40%, rgba(255,255,255,.35), rgba(255,250,238,.1));
-    box-shadow: 0 0 18px rgba(120,88,45,.15), inset 0 0 24px rgba(160,118,55,.12);
-  }
-  .arch::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(160,118,55,.3); border-radius: inherit; }
-  .arch .key { position: absolute; top: -19px; left: 50%; width: 38px; height: 38px; transform: translateX(-50%); filter: drop-shadow(0 2px 3px rgba(90,60,20,.35)); }
-  .arch .base { position: absolute; bottom: -1px; width: 34px; height: 12px; border: 1.5px solid rgba(160,118,55,.75); border-bottom: 0; background: #e6d6b8; }
-  .arch .base.l { left: -9px; } .arch .base.r { right: -9px; }
-  /* المشاعل فوق في الركنين، نارها بتترعش */
-  .torch { position: absolute !important; top: 18px; width: 30px; height: 84px; pointer-events: none; }
-  .torch.l { left: 10px; } .torch.r { right: 10px; }
-  .torch .glow { position: absolute; left: 50%; top: 2px; width: 120px; height: 120px; margin-left: -60px; margin-top: -36px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,180,80,.38), rgba(255,150,60,.1) 45%, transparent 70%); animation: glow 2.2s ease-in-out infinite alternate; }
-  .torch svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .torch .flame { transform-origin: 15px 30px; animation: flick 1.3s ease-in-out infinite alternate; }
-  .torch.r .flame, .torch.r .glow { animation-delay: -.6s; }
-  @keyframes flick { 0% { transform: scale(1, 1) skewX(0); } 35% { transform: scale(.94, 1.08) skewX(3deg); } 70% { transform: scale(1.04, .95) skewX(-3deg); } 100% { transform: scale(.97, 1.05) skewX(1deg); } }
-  @keyframes glow { 0% { opacity: .75; transform: scale(.95); } 50% { opacity: 1; } 100% { opacity: .82; transform: scale(1.05); } }
+  .page.blush::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(160,100,90,.14) 100%); }
+  .page.blush .frame { position: absolute !important; inset: 22px; pointer-events: none; border: 1px solid rgba(176,130,90,.6); border-radius: 18px; }
+  .page.blush .frame::after { content: ""; position: absolute; inset: 6px; border: 1px solid rgba(176,130,90,.3); border-radius: 14px; }
+  .page.blush .sp { position: absolute !important; width: 150px; height: 150px; pointer-events: none; }
+  .page.blush .sp.a { top: -10px; left: -10px; } .page.blush .sp.b { bottom: -10px; right: -10px; transform: rotate(180deg); }
+  .page.blush .sp.c { top: -10px; right: -10px; transform: scaleX(-1); } .page.blush .sp.d { bottom: -10px; left: -10px; transform: scaleY(-1); }
 
   /* اللوجو: إكليل ورق غار دهب، وجواه أول حرفين من الاسمين */
   .crest { display: block; width: 96px; height: 96px; margin: 0 auto 12px; overflow: visible; filter: drop-shadow(0 1px 1px rgba(255,255,255,.7)); }
-  /* شريطة حمرا للعناوين الصغيرة */
-  .ribbon { display: inline-block; padding: 7px 30px; margin-bottom: 8px;
-    font-family: "Tajawal", sans-serif; font-size: 13px; font-weight: 500; color: #f6dfa4;
-    background: linear-gradient(#8a221c, #5e130f); border-top: 1px solid rgba(232,196,120,.8); border-bottom: 1px solid rgba(232,196,120,.8);
-    clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 50%, 100% 100%, 0 100%, 12px 50%);
-    filter: drop-shadow(0 3px 4px rgba(90,40,20,.3)); }
-  .page.castle .caps { color: #8a7356; }
-  .page.castle .foil { background-image: linear-gradient(100deg, #85632a 0%, #d4b064 22%, #9a7535 40%, #e2c27b 55%, #8d6a2e 72%, #c9a258 88%, #85632a 100%); filter: drop-shadow(0 1px 1px rgba(255,255,255,.6)); }
-  .page.castle .heading { font-size: clamp(34px, 9.5vw, 44px); line-height: 1.5; margin: 4px 0; }
-  .page.castle .divider { color: #a8803f; }
-  .page.castle .venue-line { color: #6b5a44 !important; }
-  .page.castle .venue-line b { color: #9a7535; }
+  /* عنوان صغير بين خطين دهب رفيعين */
+  .ribbon { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    font-family: "Tajawal", sans-serif; font-size: 13px; font-weight: 500; color: #9a7535; }
+  .ribbon::before, .ribbon::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, transparent, #c9a258); }
+  .ribbon::after { transform: scaleX(-1); }
+  .page.blush .caps { color: #8a7356; }
+  .page.blush .foil { background-image: linear-gradient(100deg, #85632a 0%, #d4b064 22%, #9a7535 40%, #e2c27b 55%, #8d6a2e 72%, #c9a258 88%, #85632a 100%); filter: drop-shadow(0 1px 1px rgba(255,255,255,.6)); }
+  .page.blush .heading { font-size: clamp(34px, 9.5vw, 44px); line-height: 1.5; margin: 4px 0; }
+  .page.blush .divider { color: #a8803f; }
+  .page.blush .venue-line { color: #6b5a44 !important; }
+  .page.blush .venue-line b { color: #9a7535; }
 
   .count { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin: 22px 0 18px; width: min(250px, 100%); }
   .count > div { padding: 18px 0 12px; border: 1px solid rgba(160,118,55,.55); border-radius: 60px 60px 4px 4px;
@@ -284,7 +260,7 @@
 
   @media (max-height: 700px) {
     .count { gap: 10px 14px; margin: 14px 0 10px; } .count > div { padding: 12px 0 8px; } .count b { font-size: 38px; }
-    .page.castle .heading { font-size: 30px; } .page.castle { padding-top: 70px; padding-bottom: 76px; }
+    .page.blush .heading { font-size: 30px; } .page.blush { padding-top: 70px; padding-bottom: 76px; }
     .lux-names { font-size: 56px; } .crest { width: 74px; height: 74px; margin-bottom: 6px; } .divider { margin: 10px auto; }
     .date-lux { margin: 12px 0 8px; } .date-lux span { font-size: 28px; }
   }
@@ -438,7 +414,7 @@
 <main class="book" id="book">
 
   <!-- 1. الدعوة -->
-  <section class="page castle active" style="--base:7.8s">
+  <section class="page blush active" style="--base:7.8s">
     <svg class="crest st" style="--i:0" viewBox="-50 -50 100 100" role="img" aria-label="A &amp; M"><use href="#laurel" x="-50" y="-50" width="100" height="100"/>
       <text x="0" y="12" text-anchor="middle" font-family="Cinzel" font-weight="600" font-size="24" fill="url(#gd)"><tspan data-f="gi">M</tspan><tspan font-size="14" dy="-3">&amp;</tspan><tspan dy="3" data-f="bi">R</tspan></text></svg>
     <div class="ribbon st" style="--i:1">بحضور الأهل والأحباب</div>
@@ -454,7 +430,7 @@
   </section>
 
   <!-- 2. العداد -->
-  <section class="page castle">
+  <section class="page blush">
     <div class="ribbon st" style="--i:0">العد التنازلي</div>
     <div class="heading ar-script foil st" style="--i:1">كل لحظة بتقرّبنا</div>
     <div class="count st" id="timer" style="--i:2">
@@ -469,7 +445,7 @@
 
 
   <!-- 3. الميعاد والمكان (آخر صفحة) -->
-  <section class="page castle">
+  <section class="page blush">
     <div class="ribbon st" style="--i:0">موعد الحفل</div>
     <div class="heading ar-script foil st" style="--i:1">الزمان والمكان</div>
     <div class="detail st" style="--i:2"><span class="caps">استقبال الضيوف</span><div class="val" data-f="doorsOpen">الساعة 7:00 مساءً</div><div class="sub" data-f="date">13-11-2026</div></div>
@@ -524,17 +500,10 @@ const fields = {
 document.querySelectorAll("[data-f]").forEach(el => { el.textContent = fields[el.dataset.f] ?? ""; });
 document.title = `${fields.names} — ${fields.date}`;
 
-/* ---------- ديكور القلعة: القوس والمشاعل وشرار النار في كل صفحة ---------- */
-const torch = side => `<div class="torch ${side}"><div class="glow"></div><svg viewBox="0 0 30 84">
-  <g class="flame"><path d="M15 2C22 13 23 21 15 30C7 21 8 13 15 2Z" fill="url(#flameG)"/><path d="M15 14C18 19 18 24 15 29C12 24 12 19 15 14Z" fill="#fffbe6"/></g>
-  <path d="M6 30H24L20.5 39H9.5Z" fill="url(#g)"/><rect x="9" y="39" width="12" height="3" fill="#7b5a26"/>
-  <rect x="13.5" y="42" width="3" height="24" fill="#6e5021"/><path d="M15 64Q15 72 7 74" fill="none" stroke="#6e5021" stroke-width="2.5"/>
-  <rect x="3" y="70" width="8" height="12" rx="1.5" fill="url(#g)"/></svg></div>`;
-document.querySelectorAll(".page.castle").forEach(p => {
-  const dust = [...Array(10)].map(() =>
-    `<i style="left:${(Math.random() * 100).toFixed(1)}%;--t:${(9 + Math.random() * 8).toFixed(1)}s;--d:-${(Math.random() * 14).toFixed(1)}s;--x:${(Math.random() * 60 - 30).toFixed(0)}px"></i>`).join("");
+/* ---------- ديكور الصفحات: برواز دهب وورد في الأركان الأربعة ---------- */
+document.querySelectorAll(".page.blush").forEach(p => {
   p.insertAdjacentHTML("afterbegin",
-    `<div class="dust">${dust}</div><div class="arch"><svg class="key"><use href="#rosette"/></svg><i class="base l"></i><i class="base r"></i></div>${torch("l")}${torch("r")}`);
+    `<div class="frame"></div>` + ["a", "b", "c", "d"].map(k => `<svg class="sp ${k}"><use href="#sprig"/></svg>`).join(""));
 });
 
 /* ---------- الموسيقى: تحاول تشتغل أول ما اللينك يتفتح، ولو المتصفح منعها تشتغل مع أول لمسة ---------- */
@@ -586,13 +555,21 @@ function go(n) {
     inn.classList.remove("turn-in");
     busy = false;
   }, 960);
-  cur = n; render();
+  cur = n; render(); autoFlip();
 }
 const next = () => go(cur === pages.length - 1 ? 0 : cur + 1);
 const prev = () => go(cur - 1);
 
+// الصفحات بتقلب لوحدها كل 7 ثواني لحد آخر صفحة؛ وأي ضغطة من الضيف بتبدأ العد من الأول
+const FLIP_MS = 7000;
+let flipTimer;
+function autoFlip() {
+  clearTimeout(flipTimer);
+  if (cur < pages.length - 1) flipTimer = setTimeout(() => go(cur + 1), FLIP_MS);
+}
+
 let ready = false, uiTimer;
-function showUI() { if (ready) return; ready = true; clearTimeout(uiTimer); bars.hidden = false; hint.hidden = false; render(); }
+function showUI() { if (ready) return; ready = true; clearTimeout(uiTimer); bars.hidden = false; hint.hidden = false; render(); autoFlip(); }
 door.addEventListener("change", () => { startMusic(); uiTimer = setTimeout(showUI, 7800); });
 // لو الضيف ضغط وهو بيتفرج على صورة العروسين: نعدّي على الدعوة على طول
 function skipReveal() {
