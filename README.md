@@ -21,5 +21,6 @@
 - لتغييرها: حط ملفك جنب index.html واكتب اسمه في `music` جوه CONFIG
 
 ## النشر
-- لسه ما اترفعتش — مستنية اسم الـ Organization على GitHub (من حساب general-hamotos)
+- اللينك: https://mohamed-renada.github.io
+- الريبو: github.com/mohamed-renada/mohamed-renada.github.io (GitHub Pages من فرع `main`)
 - أي تعديل بعد الرفع: commit + push على `main`، والموقع بيتحدّث لوحده خلال دقيقة
