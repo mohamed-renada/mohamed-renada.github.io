@@ -46,7 +46,7 @@
   @keyframes foil { to { background-position: 220% 0; } }
 
   /* ===================== المدخل (صورة الباب) ===================== */
-  /* الصورة door.webp (باب عاجي ودهب تحت قوس ورد — نفس باب دعوة مهند ومريم) مقاسها 940×1672. الباب متقاس منها بالبكسل: من x=255 لـ 679، ومن y=302 لـ 1323، والفاصل بين الضلفتين عند x=468 */
+  /* الصورة door.webp (باب عاجي بنقوش دهب تحت قوس ورد وتحت نجفة) مقاسها 940×1672. الباب متقاس منها بالبكسل: من x=238 لـ 700، ومن y=325 لـ 1257، والفاصل بين الضلفتين عند x=469، والقوس نص دايرة نص قطرها 231 */
   #gate {
     position: fixed; inset: 0; z-index: 100; display: block; cursor: pointer; overflow: hidden;
     background: #2a2115;
@@ -57,38 +57,38 @@
   .scene {
     position: absolute; left: 50%; top: 50%;
     width: max(100vw, calc(100vh * 940 / 1672)); aspect-ratio: 940 / 1672;
-    transform: translate(-50%, -50%); transform-origin: 49.68% 48.59%;
+    transform: translate(-50%, -50%); transform-origin: 49.894% 47.309%;
     transition: transform 2.6s cubic-bezier(.6,0,.35,1) 1.2s;
   }
   @supports (height: 100dvh) { .scene { width: max(100vw, calc(100dvh * 940 / 1672)); } }
   #door:checked ~ #gate .scene { transform: translate(-50%, -50%) scale(2.2); }
   .scene > .bg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .doorway { position: absolute; left: 27.128%; top: 18.062%; width: 45.106%; height: 61.065%; perspective: 1100px; }
+  .doorway { position: absolute; left: 25.319%; top: 19.438%; width: 49.149%; height: 55.742%; perspective: 1100px; }
   /* ورا الضلفتين: صورة العروسين جوه قوس الباب */
   .door-light {
     position: absolute; inset: 0; overflow: hidden;
-    clip-path: polygon(50.24% 0.00%, 47.64% 0.78%, 41.98% 2.74%, 35.14% 4.70%, 28.07% 6.66%, 21.46% 8.62%, 15.09% 10.58%, 10.38% 12.54%, 6.84% 14.50%, 4.25% 16.45%, 2.36% 18.41%, 1.18% 20.37%, 0.47% 22.33%, 0.24% 24.29%, 0.00% 25.47%, 0.00% 100.00%, 100.00% 100.00%, 100.00% 25.47%, 99.53% 24.29%, 99.29% 22.33%, 98.58% 20.37%, 97.17% 18.41%, 95.52% 16.45%, 92.92% 14.50%, 89.15% 12.54%, 84.91% 10.58%, 79.25% 8.62%, 72.17% 6.66%, 65.09% 4.70%, 58.73% 2.74%, 52.12% 0.78%);
+    clip-path: polygon(0% 24.79%, 0.43% 21.55%, 1.7% 18.37%, 3.81% 15.3%, 6.7% 12.39%, 10.33% 9.7%, 14.64% 7.26%, 19.56% 5.12%, 25% 3.32%, 30.87% 1.89%, 37.06% 0.84%, 43.47% 0.21%, 50% 0%, 56.53% 0.21%, 62.94% 0.84%, 69.13% 1.89%, 75% 3.32%, 80.44% 5.12%, 85.36% 7.26%, 89.67% 9.7%, 93.3% 12.39%, 96.19% 15.3%, 98.3% 18.37%, 99.57% 21.55%, 100% 24.79%, 100% 100%, 0% 100%);
     background: #fff2d2;
   }
-  .door-light img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+  .door-light img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
   .door-light::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 40px 12px rgba(255,226,160,.75); }
   .leaf {
     position: absolute; top: 0; bottom: 0; overflow: hidden;
     transition: transform 2s cubic-bezier(.65,0,.3,1) .35s, filter 2s ease .35s;
     backface-visibility: hidden; will-change: transform;
   }
-  .leaf img { position: absolute; top: -29.58%; height: 163.76%; max-width: none; display: block; }
-  .leaf.l { left: 0; width: 50.24%; transform-origin: left center;
-    clip-path: polygon(100.00% 0.00%, 94.84% 0.78%, 83.57% 2.74%, 69.95% 4.70%, 55.87% 6.66%, 42.72% 8.62%, 30.05% 10.58%, 20.66% 12.54%, 13.62% 14.50%, 8.45% 16.45%, 4.69% 18.41%, 2.35% 20.37%, 0.94% 22.33%, 0.47% 24.29%, 0.00% 25.47%, 0.00% 100.00%, 100.00% 100.00%); }
-  .leaf.l img { left: -119.72%; width: 441.31%; }
-  .leaf.r { right: 0; width: 49.76%; transform-origin: right center;
-    clip-path: polygon(0.00% 0.00%, 3.79% 0.78%, 17.06% 2.74%, 29.86% 4.70%, 44.08% 6.66%, 58.29% 8.62%, 69.67% 10.58%, 78.20% 12.54%, 85.78% 14.50%, 91.00% 16.45%, 94.31% 18.41%, 97.16% 20.37%, 98.58% 22.33%, 99.05% 24.29%, 100.00% 25.47%, 100.00% 100.00%, 0.00% 100.00%); }
-  .leaf.r img { left: -221.80%; width: 445.50%; }
+  .leaf img { position: absolute; top: -34.871%; height: 179.399%; max-width: none; display: block; }
+  .leaf.l { left: 0; width: 50%; transform-origin: left center;
+    clip-path: polygon(0% 24.79%, 0.86% 21.55%, 3.41% 18.37%, 7.61% 15.3%, 13.4% 12.39%, 20.66% 9.7%, 29.29% 7.26%, 39.12% 5.12%, 50% 3.32%, 61.73% 1.89%, 74.12% 0.84%, 86.95% 0.21%, 100% 0%, 100% 100%, 0% 100%); }
+  .leaf.l img { left: -103.030%; width: 406.926%; }
+  .leaf.r { right: 0; width: 50%; transform-origin: right center;
+    clip-path: polygon(0% 0%, 13.05% 0.21%, 25.88% 0.84%, 38.27% 1.89%, 50% 3.32%, 60.88% 5.12%, 70.71% 7.26%, 79.34% 9.7%, 86.6% 12.39%, 92.39% 15.3%, 96.59% 18.37%, 99.14% 21.55%, 100% 24.79%, 100% 100%, 0% 100%); }
+  .leaf.r img { left: -203.030%; width: 406.926%; }
   #door:checked ~ #gate .leaf.l { transform: rotateY(80deg); filter: brightness(.7); }
   #door:checked ~ #gate .leaf.r { transform: rotateY(-80deg); filter: brightness(.7); }
   /* نبض نور خفيف عند المقابض عشان الضيف يعرف يضغط فين */
   .knock {
-    position: absolute; left: 50.2%; top: 66.4%; width: 22%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    position: absolute; left: 50%; top: 64.9%; width: 22%; aspect-ratio: 1; transform: translate(-50%, -50%);
     border-radius: 50%; pointer-events: none;
     background: radial-gradient(circle, rgba(255,236,180,.55), rgba(255,236,180,0) 65%);
     animation: knock 2.4s ease-in-out infinite;
